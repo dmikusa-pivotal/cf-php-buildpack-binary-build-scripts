@@ -53,15 +53,16 @@ function remote_capture {
 
 # Install git
 # TODO: move into common file (used by both remote_* scripts)
-echo -n "Checking for git... "
-if ! remote_test "hash git 2\>/dev/null"; then
+echo -n "Checking for git and curl... "
+if (! remote_test "hash git 2\>/dev/null") || (! remote_test "hash curl 2\>/dev/null"); then
     echo " not found."
     echo -n "Attempting to install... "
     remote_capture "cat /etc/issue | cut -d ' ' -f 1 | tr -d '\n'"
     if [ "$CAPTURE" == "Ubuntu" ]; then
-        remote_run "sudo apt-get -y install git-core"
-    elif [ "$CAPTURE" == "CentOS" ]; then 
-        remote_run "sudo yum install git"
+        remote_run "sudo apt-get update"
+        remote_run "sudo apt-get -y install git-core curl"
+    elif [ "$CAPTURE" == "CentOS" ]; then
+        remote_run "sudo yum install git curl"
     else
         echo "fail."
         echo "Not sure about the remote OS, please manually install git."
@@ -72,7 +73,7 @@ echo " OK."
 
 # Clone or update the repo
 echo "Cloning repository... "
-if remote_test "[ -d cf-php-buildpack-binary-build-scripts ]"; then 
+if remote_test "[ -d cf-php-buildpack-binary-build-scripts ]"; then
     remote_run "cd cf-php-buildpack-binary-build-scripts; git pull"
 else
     remote_run "git clone https://github.com/dmikusa-pivotal/cf-php-buildpack-binary-build-scripts.git"
@@ -87,7 +88,7 @@ remote_run "cd cf-php-buildpack-binary-build-scripts; git checkout \"$OS-$VERSIO
 echo "OK."
 
 # create /home/vcap/logs
-#  This path is used at runtime, but is also required by some of the packages 
+#  This path is used at runtime, but is also required by some of the packages
 #  to exist at compile time.
 #  It's not actually used, other than to satisfy that requirement.
 remote_run "sudo mkdir -p /home/vcap/logs"
@@ -108,7 +109,7 @@ else
     fi
 fi
 
-# Copy the binaries to the 
+# Copy the binaries to the
 mkdir -p "$ROOT/output/$OS-$VERSION"
 scp -r "$REMOTE_HOST:./cf-php-buildpack-binary-build-scripts/output" "$ROOT/output/$OS-$VERSION"
 remote_run "rm -rf ./cf-php-buildpack-binary-build-scripts/output"

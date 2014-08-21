@@ -1,0 +1,54 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+#######################################################################################
+######################### UBUNTU 10.04 LUCID ##########################################
+  config.vm.box = "box-cutter/ubuntu1004"
+  config.vm.synced_folder '../../', '/vagrant'
+
+  config.vm.define "lucid" do |lucid|
+    lucid.vm.hostname = 'ubuntu-10.04-cf-php-buildpack-binary-builder'
+
+    # VIRTUALBOX
+    lucid.vm.provider "virtualbox" do |virtualbox|
+      virtualbox.name = "Ubuntu 10.04 Lucid - CF PHP Buildpack Binary Builder (vagrant)"
+    end
+  end
+
+#######################################################################################
+######################### DIGITAL OCEAN GLOBAL CONFIG #################################
+
+  config.vm.provider "digital_ocean" do |digitalocean, override|
+    override.vm.box     = 'digital_ocean'
+    override.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+    override.vm.synced_folder '../../', '/vagrant', disabled: true
+
+    digitalocean.region = 'nyc2'
+    digitalocean.size   = '1GB'
+    digitalocean.image  = 'Ubuntu 10.04 x64'
+
+    digitalocean.ssh_key_name = ENV.fetch("SSH_KEY_NAME", 'Vagrant')
+    override.ssh.private_key_path = ENV.fetch("SSH_PRIVATE_KEY_PATH", '~/.ssh/id_rsa')
+    digitalocean.token = ENV.fetch("DO_API_TOKEN", 'YOUR API TOKEN')
+  end
+
+#######################################################################################
+######################### VIRTUALBOX GLOBAL CONFIG ####################################
+
+  config.vm.provider "virtualbox" do |virtualbox, override|
+      virtualbox.cpus = ENV.fetch("VM_CORES", 4).to_i
+  end
+
+#######################################################################################
+######################### FUSION GLOBAL CONFIG ########################################
+
+  config.vm.provider "vmware_fusion" do |fusion, override|
+    fusion.vmx["numvcpus"] = ENV.fetch("VM_CORES", 4).to_i
+  end
+
+end
