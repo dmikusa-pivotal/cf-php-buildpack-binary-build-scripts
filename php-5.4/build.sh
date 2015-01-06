@@ -41,6 +41,7 @@ MODULES[xcache]="3.2.0"
 MODULES[xdebug]="2.2.6"
 MODULES[xhprof]="trunk"
 MODULES[zendopcache]="7.0.3"
+MODULES[zookeeper]="0.2.2"
 # location where files are built
 INSTALL_DIR="/tmp/staged/app"
 BUILD_DIR=`pwd`/build
@@ -170,6 +171,7 @@ package_php_extensions() {
 	package_php_extension "xdebug"
 	package_php_extension "xhprof"
 	package_php_extension "zip"
+    package_php_extension "zookeeper" "libzookeeper_mt.so.2"
 	# remove packaged files
 	rm php/lib/lib*
 	rm php/lib/php/extensions/no-debug-non-zts-$ZTS_VERSION/*
