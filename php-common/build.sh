@@ -26,6 +26,26 @@ build_librabbit() {
 	cd "$BUILD_DIR"
 }
 
+build_lua() {
+       echo "----------------------  Building [lua52] ---------------------------"
+       cd "$BUILD_DIR"
+       if [ ! -d "lua-$LUA_VERSION.tar.gz" ]; then
+               curl -L -O "http://www.lua.org/ftp/lua-$LUA_VERSION.tar.gz"
+               tar zxf "lua-$LUA_VERSION.tar.gz"
+               rm "lua-$LUA_VERSION.tar.gz"
+               cd "lua-$LUA_VERSION"
+               sed -i "s|^CFLAGS= -O2 -Wall|CFLAGS= -O2 -fPIC -Wall|" src/Makefile
+               make -j 5 linux
+       else
+               cd "lua-$LUA_VERSION"
+       fi
+       if [ ! -d "$INSTALL_DIR/lua-$LUA_VERSION" ]; then
+               make install INSTALL_TOP="$INSTALL_DIR/lua-$LUA_VERSION"
+       fi
+       cd "$BUILD_DIR"
+}
+
+
 build_codizy() {
 	cd "$BUILD_DIR"
 	if [ ! -d "codizy-extension" ]; then
@@ -222,7 +242,7 @@ build_external_extension() {
                 curl -L -O "http://pecl.php.net/get/$NAME-$VERSION.tgz"
                 tar zxf "$NAME-$VERSION.tgz"
                 rm "$NAME-$VERSION.tgz"
-		rm package.xml
+		rm package*.xml
 		cd "$NAME-$VERSION"
 		"$INSTALL_DIR/php/bin/phpize"
 		# specify custom ./configure arguments
@@ -234,13 +254,17 @@ build_external_extension() {
 				--enable-memcached-msgpack \
 				--enable-memcached-igbinary \
 				--enable-memcached-json
+        elif [ "$NAME" == "lua" ]; then
+            build_lua
+            cd "$BUILD_DIR/$NAME-$VERSION"
+            ./configure --with-php-config="$INSTALL_DIR/php/bin/php-config" --with-lua="$INSTALL_DIR/lua-$LUA_VERSION"
 		else
 			./configure --with-php-config="$INSTALL_DIR/php/bin/php-config"
 		fi
 		make -j 5
 	else
 		cd "$NAME-$VERSION"
-        fi
+    fi
 	make install
 	cd "$BUILD_DIR"
 }
