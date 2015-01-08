@@ -17,6 +17,7 @@ ZTS_VERSION=20100525
 RABBITMQ_C_VERSION="0.5.2"
 LIBMEMCACHED_VERSION="1.0.18"
 HIREDIS_VERSION="0.11.0"
+LUA_VERSION="5.2.3"
 declare -A MODULES
 MODULES[amqp]="1.4.0"
 MODULES[APC]="3.1.9"
@@ -26,6 +27,7 @@ MODULES[igbinary]="1.2.1"
 MODULES[imagick]="3.1.2"
 MODULES[intl]="3.0.0"
 MODULES[ioncube]="4.7.3"
+MODULES[lua]="1.1.0"
 MODULES[mailparse]="2.1.6"
 MODULES[memcache]="2.2.7"
 MODULES[memcached]="2.2.0"
@@ -154,6 +156,7 @@ package_php_extensions() {
 	package_php_extension "imagick"
 	package_php_extension "intl" "libicui18n.so.48" "libicuuc.so.48" "libicudata.so.48" "libicuio.so.48"
     package_php_extension "ioncube"
+    package_php_extension "lua"
 	package_php_extension "mailparse"
 	package_php_extension "memcache"
 	package_php_extension "memcached" \
