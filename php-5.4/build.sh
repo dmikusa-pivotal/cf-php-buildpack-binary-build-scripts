@@ -39,6 +39,7 @@ MODULES[twig]="1.16.2"
 MODULES[xcache]="3.2.0"
 MODULES[xdebug]="2.2.6"
 MODULES[xhprof]="trunk"
+MODULES[yaf]="2.2.9"
 MODULES[zendopcache]="7.0.3"
 MODULES[zookeeper]="0.2.2"
 # location where files are built
@@ -166,6 +167,7 @@ package_php_extensions() {
     package_php_extension "xcache"
 	package_php_extension "xdebug"
 	package_php_extension "xhprof"
+    package_php_extension "yaf"
 	package_php_extension "zip"
     package_php_extension "zookeeper" "libzookeeper_mt.so.2"
 	# remove packaged files
