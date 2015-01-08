@@ -37,7 +37,7 @@ MODULES[sundown]="0.3.11"
 MODULES[twig]="1.16.2"
 MODULES[xcache]="3.2.0"
 MODULES[xdebug]="2.2.6"
-MODULES[yaf]="2.2.9"
+MODULES[yaf]="2.3.3"
 # location where files are built
 INSTALL_DIR="/tmp/staged/app"
 BUILD_DIR=`pwd`/build
