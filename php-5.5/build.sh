@@ -10,12 +10,12 @@
 ##################################################################
 #  Configuration
 #
-PHP_VERSION=5.5.20
+PHP_VERSION=5.5.21
 VERSION_POSTFIX=
 ZTS_VERSION=20121212
 # Third Party Module Versions
 RABBITMQ_C_VERSION="0.5.2"
-HIREDIS_VERSION="0.11.0"
+HIREDIS_VERSION="0.12.0"
 LUA_VERSION="5.2.3"
 declare -A MODULES
 MODULES[amqp]="1.4.0"
@@ -35,9 +35,9 @@ MODULES[phalcon]="1.3.4"
 MODULES[redis]="2.2.5"
 MODULES[suhosin]="0.9.37.1"
 MODULES[sundown]="0.3.11"
-MODULES[twig]="1.16.2"
+MODULES[twig]="1.17.0"
 MODULES[xcache]="3.2.0"
-MODULES[xdebug]="2.2.6"
+MODULES[xdebug]="2.2.7"
 MODULES[xhprof]="trunk"
 MODULES[yaf]="2.2.9"
 # location where files are built
