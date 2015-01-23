@@ -335,10 +335,10 @@ package_php_extension_snmp() {
 
 package_php_fpm() {
 	cd "$INSTALL_DIR"
-	tar czf "php-fpm-$PHP_VERSION.tar.gz" php/sbin php/php/fpm
+	tar czf "php-fpm-$PHP_VERSION.tar.gz" php/sbin
 	shasum "php-fpm-$PHP_VERSION.tar.gz" > "php-fpm-$PHP_VERSION.tar.gz.sha1"
 	rm php/sbin/*
-	rm -rf php/php/fpm
+	rm -rf php/php/
 	cd "$INSTALL_DIR"
 }
 
