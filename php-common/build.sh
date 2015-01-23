@@ -76,6 +76,7 @@ build_hiredis() {
 	fi
 	if [ ! -d "$INSTALL_DIR/hiredis-$HIREDIS_VERSION" ]; then
 		PREFIX="$INSTALL_DIR/hiredis-$HIREDIS_VERSION" make install
+        cp read.h sds.h "$INSTALL_DIR/hiredis-$HIREDIS_VERSION/include/hiredis/"
 	fi
 	cd "$BUILD_DIR"
 }
