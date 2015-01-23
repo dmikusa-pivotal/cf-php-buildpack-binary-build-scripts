@@ -176,7 +176,7 @@ package_php_extensions() {
 	package_php_extension "xhprof"
     package_php_extension "yaf"
 	package_php_extension "zip"
-    package_php_extension "zookeeper" "libzookeeper_mt.so.2"
+    package_php_extension "zookeeper" "/usr/lib/x86_64-linux-gnu/libzookeeper_mt.so.2"
 	# remove packaged files
 	rm php/lib/lib*
 	rm php/lib/php/extensions/no-debug-non-zts-$ZTS_VERSION/*
