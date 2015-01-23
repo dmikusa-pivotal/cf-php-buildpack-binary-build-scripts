@@ -10,13 +10,13 @@
 ##################################################################
 #  Configuration
 #
-PHP_VERSION=5.4.36
+PHP_VERSION=5.4.37
 VERSION_POSTFIX=
 ZTS_VERSION=20100525
 # Third Party Module Versions
 RABBITMQ_C_VERSION="0.5.2"
 LIBMEMCACHED_VERSION="1.0.18"
-HIREDIS_VERSION="0.11.0"
+HIREDIS_VERSION="0.12.0"
 LUA_VERSION="5.2.3"
 declare -A MODULES
 MODULES[amqp]="1.4.0"
@@ -38,12 +38,12 @@ MODULES[phalcon]="1.3.4"
 MODULES[redis]="2.2.5"
 MODULES[suhosin]="0.9.37.1"
 MODULES[sundown]="0.3.11"
-MODULES[twig]="1.16.2"
+MODULES[twig]="1.17.0"
 MODULES[xcache]="3.2.0"
-MODULES[xdebug]="2.2.6"
+MODULES[xdebug]="2.2.7"
 MODULES[xhprof]="trunk"
 MODULES[yaf]="2.2.9"
-MODULES[zendopcache]="7.0.3"
+MODULES[zendopcache]="7.0.4"
 MODULES[zookeeper]="0.2.2"
 # location where files are built
 INSTALL_DIR="/tmp/staged/app"
