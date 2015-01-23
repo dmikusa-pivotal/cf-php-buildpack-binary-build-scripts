@@ -152,7 +152,7 @@ build_twig() {
        cd "$BUILD_DIR"
        TWIG_VERSION=$1
        if [ ! -d "Twig-$TWIG_VERSION" ]; then
-               curl -L -O "https://github.com/fabpot/Twig/archive/v$TWIG_VERSION.tar.gz"
+               curl -L -O "https://github.com/twigphp/Twig/archive/v$TWIG_VERSION.tar.gz"
                tar zxf "v$TWIG_VERSION.tar.gz"
                rm "v$TWIG_VERSION.tar.gz"
        fi
