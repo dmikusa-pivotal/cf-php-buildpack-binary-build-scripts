@@ -45,7 +45,7 @@ function run_build_local() {
     VM=$1
     PKG=$2
     echo "Running build for [$(basename $VM)]"
-    "$VM/vm_ctl" box update
+    #"$VM/vm_ctl" box update
     "$VM/vm_ctl" up
     if [ "$PKG" == "" ]; then
         "$VM/vm_ctl" ssh -c 'cd $HOME; /vagrant/build/run_local.sh'
@@ -59,7 +59,7 @@ function run_build_do() {
     VM=$1
     PKG=$2
     echo "Running build for [$(basename $VM)]"
-    "$VM/vm_ctl" box update
+    #"$VM/vm_ctl" box update
     "$VM/vm_ctl" up
     if [ "$PKG" == "" ]; then
         "$VM/vm_ctl" ssh -c 'cd $HOME; bash <( curl -s https://raw.githubusercontent.com/dmikusa-pivotal/cf-php-buildpack-binary-build-scripts/master/build/run_local.sh )'
