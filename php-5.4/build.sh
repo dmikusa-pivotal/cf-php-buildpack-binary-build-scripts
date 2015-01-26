@@ -63,7 +63,6 @@ function build_php54() {
 		cd "php-$PHP_VERSION"
 		./configure \
 			--prefix="$INSTALL_DIR/php" \
-			--with-config-file-path=/home/vcap/app/php/etc \
 			--disable-static \
 			--enable-shared \
 			--enable-ftp=shared \
