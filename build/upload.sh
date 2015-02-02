@@ -54,8 +54,8 @@ for FOLDER in "$UPLOAD_DIR"/*; do
                 COMPONENT_NAME=$(echo "$COMPONENT" | cut -d '-' -f 1)
                 COMPONENT_VERSION=$(echo "$COMPONENT"  |cut -d '-' -f 2)
                 FILE_BASE=$(basename "$FILE")
-                TO_PATH="Public/binaries/$VERSION_NAME/$COMPONENT_NAME/$COMPONENT_VERSION/$FILE_BASE"
-                "$ROOT/dropbox/dropbox_uploader.sh" upload "$FILE" "$TO_PATH"
+                TO_PATH="s3://pivotal-buildpacks/php/binaries/$VERSION_NAME/$COMPONENT_NAME/$COMPONENT_VERSION/$FILE_BASE"
+                aws --profile "php_bp_s3" s3 cp "$FILE" "$TO_PATH"
             done
             echo
         done
