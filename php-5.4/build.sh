@@ -16,7 +16,7 @@ ZTS_VERSION=20100525
 # Third Party Module Versions
 RABBITMQ_C_VERSION="0.5.2"
 LIBMEMCACHED_VERSION="1.0.18"
-HIREDIS_VERSION="0.12.0"
+HIREDIS_VERSION="0.11.0"
 LUA_VERSION="5.2.3"
 declare -A MODULES
 MODULES[amqp]="1.4.0"
@@ -164,7 +164,7 @@ package_php_extensions() {
 	package_php_extension "mongo"
 	package_php_extension "msgpack"
 	package_php_extension "opcache"  # ZendOpcache
-	package_php_extension "phpiredis" "$INSTALL_DIR/hiredis-$HIREDIS_VERSION/lib/libhiredis.so.0.12"
+	package_php_extension "phpiredis" "$INSTALL_DIR/hiredis-$HIREDIS_VERSION/lib/libhiredis.so.0.10"
 	package_php_extension "phalcon"
 	package_php_extension "redis"
 	package_php_extension "suhosin"
