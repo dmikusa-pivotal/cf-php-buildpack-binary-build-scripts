@@ -99,6 +99,7 @@ function build_php54() {
 			--with-ldap=shared \
 			--with-ldap-sasl \
 			--with-zlib=shared \
+            --with-xsl=shared \
 			--with-snmp=shared \
 			--enable-mbstring=shared \
 			--enable-mbregex \
@@ -144,6 +145,9 @@ package_php_extensions() {
 	package_php_extension "pgsql"
 	package_php_extension "pspell" "libaspell.so" "libpspell.so"
 	package_php_extension_snmp
+    package_php_extension "soap"
+    package_php_extension "sockets"
+    package_php_extension "xsl"
 	package_php_extension "zlib"
 	# package third party extensions
 	package_php_extension "amqp" "$INSTALL_DIR/librmq-$RABBITMQ_C_VERSION/lib/librabbitmq.so.1"
