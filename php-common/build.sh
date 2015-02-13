@@ -320,8 +320,11 @@ package_php_extension_snmp() {
        # copy mibs download config
        cp -R /etc/snmp-mibs-downloader php/mibs/conf
        sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/iana.conf
+       sed -i "s|^DEST=iana|DEST=|" php/mibs/conf/iana.conf
        sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/ianarfc.conf
+       sed -i "s|^DEST=iana|DEST=|" php/mibs/conf/ianarfc.conf
        sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/rfc.conf
+       sed -i "s|^DEST=ietf|DEST=|" php/mibs/conf/rfc.conf
        sed -i "s|^BASEDIR=/var/lib/mibs|BASEDIR=\$HOME/php/mibs|" php/mibs/conf/snmp-mibs-downloader.conf
        # copy data files
        mkdir php/mibs/originals
