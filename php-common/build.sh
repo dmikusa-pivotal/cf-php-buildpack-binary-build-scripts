@@ -308,11 +308,24 @@ package_php_extension_snmp() {
        cp "/usr/lib/x86_64-linux-gnu/libnetsnmp.so.30" php/lib/
        tar rf "php-$NAME-$PHP_VERSION.tar" "php/lib/libnetsnmp.so.30"
        mkdir -p php/mibs
+       # copy mibs that are packaged freely
        cp /usr/share/snmp/mibs/* php/mibs
+       # create place holders for mibs
+       mkdir php/mibs/originals
+       # copy mibs downloader, will download un-free mibs
+       cp /usr/bin/download-mibs php/bin
+       sed -i "s|^CONFDIR=/etc/snmp-mibs-downloader|CONFDIR=\$HOME/php/mibs/conf|" php/bin/download-mibs
+       # copy mibs download config
+       cp -R /etc/snmp-mibs-downloader php/lib/conf
+       sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/iana.conf
+       sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/ianarfc.conf
+       sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/rfc.conf
+       sed -i "s|^BASEDIR=/var/lib/mibs|BASEDIR=\$HOME/php/mibs|" php/mibs/conf/snmp-mibs-downloader.conf
+       # zip everything up
        tar rf "php-$NAME-$PHP_VERSION.tar" "php/mibs"
        gzip -f -9 "php-$NAME-$PHP_VERSION.tar"
-        shasum "php-$NAME-$PHP_VERSION.tar.gz" > "php-$NAME-$PHP_VERSION.tar.gz.sha1"
-        cd "$INSTALL_DIR"
+       shasum "php-$NAME-$PHP_VERSION.tar.gz" > "php-$NAME-$PHP_VERSION.tar.gz.sha1"
+       cd "$INSTALL_DIR"
 }
 
 package_php_fpm() {
