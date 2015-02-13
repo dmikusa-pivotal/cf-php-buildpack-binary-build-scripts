@@ -155,7 +155,7 @@ package_php_extensions() {
     package_php_extension "lua"
 	package_php_extension "mailparse"
 	package_php_extension "memcache"
-	package_php_extension "memcached" "libmemcached.so.10" "libmemcachedutil.so.15"
+	package_php_extension "memcached" "libmemcached.so.10"
 	package_php_extension "mongo"
 	package_php_extension "msgpack"
 	package_php_extension "phpiredis" "$INSTALL_DIR/hiredis-$HIREDIS_VERSION/lib/libhiredis.so.0.12"
