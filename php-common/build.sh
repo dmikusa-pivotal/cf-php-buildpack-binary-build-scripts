@@ -315,13 +315,15 @@ package_php_extension_snmp() {
        # copy mibs downloader, will download un-free mibs
        cp /usr/bin/download-mibs php/bin
        sed -i "s|^CONFDIR=/etc/snmp-mibs-downloader|CONFDIR=\$HOME/php/mibs/conf|" php/bin/download-mibs
+       tar rf "php-$NAME-$PHP_VERSION.tar" "php/bin/download-mibs"
+       rm php/bin/download-mibs
        # copy mibs download config
-       cp -R /etc/snmp-mibs-downloader php/lib/conf
+       cp -R /etc/snmp-mibs-downloader php/mibs/conf
        sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/iana.conf
        sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/ianarfc.conf
        sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/rfc.conf
        sed -i "s|^BASEDIR=/var/lib/mibs|BASEDIR=\$HOME/php/mibs|" php/mibs/conf/snmp-mibs-downloader.conf
-       # zip everything up
+       # zip up mibs
        tar rf "php-$NAME-$PHP_VERSION.tar" "php/mibs"
        gzip -f -9 "php-$NAME-$PHP_VERSION.tar"
        shasum "php-$NAME-$PHP_VERSION.tar.gz" > "php-$NAME-$PHP_VERSION.tar.gz.sha1"
