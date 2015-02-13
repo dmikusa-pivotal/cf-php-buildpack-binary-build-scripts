@@ -310,19 +310,23 @@ package_php_extension_snmp() {
        mkdir -p php/mibs
        # copy mibs that are packaged freely
        cp /usr/share/snmp/mibs/* php/mibs
-       # create place holders for mibs
-       mkdir php/mibs/originals
-       # copy mibs downloader, will download un-free mibs
+       # copy mibs downloader & smistrip, will download un-free mibs
        cp /usr/bin/download-mibs php/bin
+       cp /usr/bin/smistrip php/bin
        sed -i "s|^CONFDIR=/etc/snmp-mibs-downloader|CONFDIR=\$HOME/php/mibs/conf|" php/bin/download-mibs
-       tar rf "php-$NAME-$PHP_VERSION.tar" "php/bin/download-mibs"
-       rm php/bin/download-mibs
+       sed -i "s|^SMISTRIP=/usr/bin/smistrip|SMISTRIP=\$HOME/php/bin/smistrip|" php/bin/download-mibs
+       tar rf "php-$NAME-$PHP_VERSION.tar" "php/bin/download-mibs" "php/bin/smistrip"
+       rm php/bin/download-mibs php/bin/smistrip
        # copy mibs download config
        cp -R /etc/snmp-mibs-downloader php/mibs/conf
        sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/iana.conf
        sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/ianarfc.conf
        sed -i "s|^DIR=/usr/share/doc|DIR=\$HOME/php/mibs/originals|" php/mibs/conf/rfc.conf
        sed -i "s|^BASEDIR=/var/lib/mibs|BASEDIR=\$HOME/php/mibs|" php/mibs/conf/snmp-mibs-downloader.conf
+       # copy data files
+       mkdir php/mibs/originals
+       cp -R /usr/share/doc/mibiana php/mibs/originals
+       cp -R /usr/share/doc/mibrfcs php/mibs/originals
        # zip up mibs
        tar rf "php-$NAME-$PHP_VERSION.tar" "php/mibs"
        gzip -f -9 "php-$NAME-$PHP_VERSION.tar"
