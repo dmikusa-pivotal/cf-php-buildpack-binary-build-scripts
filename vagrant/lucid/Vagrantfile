@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 #######################################################################################
 ######################### UBUNTU 10.04 LUCID ##########################################
-  config.vm.box = "box-cutter/ubuntu1004"
+  config.vm.box = "boxcutter/ubuntu1004"
   config.vm.synced_folder '../../', '/vagrant'
 
   config.vm.define "lucid" do |lucid|
