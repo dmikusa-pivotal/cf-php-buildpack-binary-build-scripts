@@ -10,7 +10,7 @@
 ##################################################################
 #  Configuration
 #
-PHP_VERSION=5.5.21
+PHP_VERSION=5.5.22
 VERSION_POSTFIX=
 ZTS_VERSION=20121212
 # Third Party Module Versions
@@ -19,23 +19,24 @@ HIREDIS_VERSION="0.12.0"
 LUA_VERSION="5.2.3"
 declare -A MODULES
 MODULES[amqp]="1.4.0"
-MODULES[codizy]="trunk"
+# Not building until legal issues resolved
+#MODULES[codizy]="trunk"
 MODULES[igbinary]="1.2.1"
 MODULES[imagick]="3.1.2"
 MODULES[intl]="3.0.0"
-MODULES[ioncube]="4.7.3"
+MODULES[ioncube]="4.7.4"
 MODULES[lua]="1.1.0"
 MODULES[mailparse]="2.1.6"
 MODULES[memcache]="2.2.7"
 MODULES[memcached]="2.2.0"
-MODULES[mongo]="1.5.8"
+MODULES[mongo]="1.6.3"
 MODULES[msgpack]="0.5.5"
 MODULES[phpiredis]="trunk"
 MODULES[phalcon]="1.3.4"
 MODULES[redis]="2.2.5"
 MODULES[suhosin]="0.9.37.1"
 MODULES[sundown]="0.3.11"
-MODULES[twig]="1.17.0"
+MODULES[twig]="1.18.0"
 MODULES[xcache]="3.2.0"
 MODULES[xdebug]="2.2.7"
 MODULES[xhprof]="trunk"
