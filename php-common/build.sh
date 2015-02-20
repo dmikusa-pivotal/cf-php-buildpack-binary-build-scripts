@@ -183,7 +183,8 @@ build_xcache() {
 build_xhprof() {
 	cd "$BUILD_DIR"
 	if [ ! -d "xhprof" ]; then
-		git clone https://github.com/codizy-software/xhprof
+		#git clone https://github.com/codizy-software/xhprof
+        git clone https://github.com/phacility/xhprof
 		cd xhprof
 	else
 		cd xhprof
