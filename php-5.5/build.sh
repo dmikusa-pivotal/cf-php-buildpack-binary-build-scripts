@@ -119,7 +119,7 @@ function build_php55() {
 package_php_extensions() {
 	cd "$INSTALL_DIR"
 	package_php_extension "bz2"
-	package_php_extension "codizy"
+	#package_php_extension "codizy"
 	package_php_extension "curl"
 	package_php_extension "dba"
     package_php_extension "exif"
