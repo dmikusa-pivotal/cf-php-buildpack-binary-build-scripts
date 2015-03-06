@@ -117,6 +117,22 @@ build_phpiredis() {
 	cd "$BUILD_DIR"
 }
 
+build_php-protobuf() {
+       cd "$BUILD_DIR"
+       if [ ! -d "phpprotobuf" ]; then
+               git clone https://github.com/allegro/php-protobuf.git
+               cd php-protobuf
+       else
+               cd php-protobuf
+               git pull
+       fi
+       "$INSTALL_DIR/php/bin/phpize"
+       ./configure --with-php-config="$INSTALL_DIR/php/bin/php-config"
+       make -j 5
+       make install
+       cd "$BUILD_DIR"
+}
+
 build_phpalcon() {
 	cd "$BUILD_DIR"
 	PHALCON_VERSION=$1
@@ -223,6 +239,10 @@ build_external_extension() {
 		build_phpiredis
 		return # not part of PECL
 	fi
+    if [ "$NAME" == "protobuf" ]; then
+        build_php-protobuf
+        return # not part of PECL
+    fi
 	if [ "$NAME" == "suhosin" ]; then
         build_suhosin $VERSION
         return # not part of PECL
