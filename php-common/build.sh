@@ -119,7 +119,7 @@ build_phpiredis() {
 
 build_php-protobuf() {
        cd "$BUILD_DIR"
-       if [ ! -d "phpprotobuf" ]; then
+       if [ ! -d "php-protobuf" ]; then
                git clone https://github.com/allegro/php-protobuf.git
                cd php-protobuf
        else
