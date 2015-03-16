@@ -2,7 +2,7 @@
 #
 ##################################################################
 #
-# Script to package HHVM 3.5 for Ubuntu Trusty
+# Script to package HHVM 3.6 for Ubuntu Trusty
 #
 #   Author:  Daniel Mikusa
 #     Date:  3-3-2015
@@ -10,7 +10,7 @@
 ##################################################################
 #  Configuration
 #
-HHVM_VERSION=3.5.0
+HHVM_VERSION=3.6.0
 BUILD_DIR=`pwd`/build
 ##################################################################
 set -e
