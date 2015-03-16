@@ -52,6 +52,7 @@ download "http://mirrors.kernel.org/ubuntu/pool/main/b/boost1.54/libboost-progra
 download "http://mirrors.kernel.org/ubuntu/pool/main/b/boost1.54/libboost-regex1.54.0_1.54.0-4ubuntu3.1_amd64.deb" "boost-regex"
 download "http://mirrors.kernel.org/ubuntu/pool/main/b/boost1.54/libboost-system1.54.0_1.54.0-4ubuntu3.1_amd64.deb" "boost-system"
 download "http://mirrors.kernel.org/ubuntu/pool/main/b/boost1.54/libboost-thread1.54.0_1.54.0-4ubuntu3.1_amd64.deb" "boost-thread"
+download "http://mirrors.kernel.org/ubuntu/pool/universe/b/boost1.54/libboost-context1.54.0_1.54.0-4ubuntu3.1_amd64.deb" "boost-context"
 download "http://mirrors.kernel.org/ubuntu/pool/main/g/google-glog/libgoogle-glog0_0.3.3-2_amd64.deb" "libgoogle"
 download "http://mirrors.kernel.org/ubuntu/pool/universe/j/jemalloc/libjemalloc1_3.6.0-3_amd64.deb" "jemalloc"
 download "http://mirrors.kernel.org/ubuntu/pool/universe/libo/libonig/libonig2_5.9.6-1_amd64.deb" "libonig"
@@ -68,6 +69,8 @@ rm "$BUILD_DIR/files_hhvm/usr/bin/hh_server" \
    "$BUILD_DIR/files_hhvm/usr/bin/hack_remove_soft_types" \
    "$BUILD_DIR/files_hhvm/usr/bin/hackificator" \
    "$BUILD_DIR/files_hhvm/usr/bin/h2tp"
+cp "/usr/lib/x86_64-linux-gnu/libyaml-0.so.2" "$BUILD_DIR/files_hhvm/usr/lib/hhvm/"
+cp "$BUILD_DIR/files_boost-context/usr/lib/x86_64-linux-gnu/libboost_context.so.1.54.0" "$BUILD_DIR/files_hhvm/usr/lib/hhvm/"
 cp "/usr/lib/x86_64-linux-gnu/libgmp.so.10" "$BUILD_DIR/files_hhvm/usr/lib/hhvm/"
 cp "/usr/lib/x86_64-linux-gnu/libMagickWand.so.5" "$BUILD_DIR/files_hhvm/usr/lib/hhvm/"
 cp "/usr/lib/x86_64-linux-gnu/libMagickCore.so.5" "$BUILD_DIR/files_hhvm/usr/lib/hhvm/"
