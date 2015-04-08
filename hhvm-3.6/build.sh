@@ -10,7 +10,7 @@
 ##################################################################
 #  Configuration
 #
-HHVM_VERSION=3.6.0
+HHVM_VERSION=3.6.1
 BUILD_DIR=`pwd`/build
 ##################################################################
 set -e
@@ -56,10 +56,10 @@ download "http://mirrors.kernel.org/ubuntu/pool/universe/b/boost1.54/libboost-co
 download "http://mirrors.kernel.org/ubuntu/pool/main/g/google-glog/libgoogle-glog0_0.3.3-2_amd64.deb" "libgoogle"
 download "http://mirrors.kernel.org/ubuntu/pool/universe/j/jemalloc/libjemalloc1_3.6.0-3_amd64.deb" "jemalloc"
 download "http://mirrors.kernel.org/ubuntu/pool/universe/libo/libonig/libonig2_5.9.6-1_amd64.deb" "libonig"
-download "http://mirrors.kernel.org/ubuntu/pool/universe/t/tbb/libtbb2_4.2~20140122-5_amd64.deb" "libtbb2"
+download "http://mirrors.kernel.org/ubuntu/pool/universe/t/tbb/libtbb2_4.2~20130725-1.1ubuntu1_amd64.deb" "libtbb2"
 download "http://mirrors.kernel.org/ubuntu/pool/main/g/gflags/libgflags2_2.0-2.1_amd64.deb" "libgflags"
 download "http://mirrors.kernel.org/ubuntu/pool/main/libu/libunwind/libunwind8_1.1-3.2_amd64.deb" "libunwind"
-download "http://mirrors.kernel.org/ubuntu/pool/main/g/gcc-4.9/libstdc%2b%2b6_4.9.2-10ubuntu9_amd64.deb" "libstdcpp"
+download "http://mirrors.kernel.org/ubuntu/pool/main/g/gcc-4.9/libstdc%2b%2b6_4.9.2-10ubuntu12_amd64.deb" "libstdcpp"
 
 # package up external files
 echo -n "    Packaging additional libraries..."
