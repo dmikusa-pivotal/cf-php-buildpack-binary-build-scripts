@@ -1,3 +1,7 @@
+# Attention: This project is no longer being used!
+
+See the project that has replace it, [binary-builder here](https://github.com/cloudfoundry/binary-builder)
+
 ## CloudFoundry PHP Build Pack Binary Build Scripts
 
 This is a set of scripts that can be used to build the binary files required by the [CF PHP Build Pack]:
